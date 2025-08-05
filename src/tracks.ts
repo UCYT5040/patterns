@@ -2,6 +2,7 @@ import {Pattern} from './pattern';
 import {ResizingShapes} from './patterns/resizingShapes';
 import {Title} from './patterns/title';
 import {Drip} from './patterns/drip';
+import {Strips} from './patterns/strips';
 
 interface Track {
     title: string;
@@ -11,7 +12,7 @@ interface Track {
     patterns: (typeof Pattern)[];
 }
 
-const allPatterns = [ResizingShapes, Title, Drip, Drip, Drip, Drip, Drip, Drip]
+const allPatterns = [ResizingShapes, Title, Drip, Strips];
 
 export const tracks: Track[] = [
     {

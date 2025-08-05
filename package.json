@@ -1,0 +1,14 @@
+{
+  "name": "patterns",
+  "version": "1.0.0",
+  "description": "An infinite, immersive visual experience.",
+  "source": "src/index.html",
+  "scripts": {
+    "dev": "parcel"
+  },
+  "author": "Jeremiah Saunders",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  }
+}

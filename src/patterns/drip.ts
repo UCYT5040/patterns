@@ -35,7 +35,7 @@ export class Drip extends Pattern {
     lastDropAdded: number = -1; // Beat when the last drop was added
     drops: Drop[] = []; // Array to hold drops
     liquidColor: string = liquidColors[Math.floor(Math.random() * liquidColors.length)];
-    
+
     liquidLevel(x: number): number {
         return x / 2 + (1 / Math.sqrt(5)) * Math.cos(2 * Math.PI * x) + 1;
     }

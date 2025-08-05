@@ -58,8 +58,8 @@ export class Strips extends Pattern {
             this.lastStripAdded = this.beat;
         }
         this.drawStrips();
-        // Stop after 32 beats
-        if (this.beat >= 32) {
+        // Stop after 24 beats
+        if (this.beat >= 24) {
             this.stop();
         }
     }

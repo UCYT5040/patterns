@@ -53,8 +53,8 @@ export class Drip extends Pattern {
             this.lastDropAdded = this.beat;
         }
         this.drawDrops();
-        // Stop after 30 beats
-        if (this.beat >= 30) {
+        // Stop after 24 beats
+        if (this.beat >= 24) {
             this.stop();
         }
     }

@@ -31,8 +31,8 @@ export class ResizingShapes extends Pattern {
             this.lastBeatAdded = this.beat;
         }
         this.drawShapes();
-        // Stop after 30 beats
-        if (this.beat >= 30) {
+        // Stop after 24 beats
+        if (this.beat >= 24) {
             this.stop();
         }
     }

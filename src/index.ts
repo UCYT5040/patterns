@@ -16,22 +16,51 @@ function resize() {
 resize();
 window.addEventListener('resize', resize);
 
-let track = tracks[0]; // Select the first track for now
+let track;
 
-const audio = new Audio(track.url as unknown as string); // Parcel handles URL to string conversion
+function selectTrack() {
+    track = tracks[Math.floor(Math.random() * tracks.length)];
+}
+
+selectTrack();
+
+let audio = new Audio(track.url as unknown as string); // Parcel handles URL to string conversion
+let nextAudio: HTMLAudioElement | null = null;
 
 function startTrack() {
     if (!track || !ctx) return;
 
-    audio.loop = true;
+    if (nextAudio) {
+        audio = nextAudio;
+        nextAudio = null;
+    }
+
     audio.play().catch(error => {
         console.error('Error playing audio:', error);
     });
 
+    audio.onended = () => {
+        // Start fetching a new track when the current one ends
+        if (!nextAudio) {
+            selectTrack();
+            nextAudio = new Audio(track.url as unknown as string); // Parcel handles URL to string conversion
+        }
+    }
+
     let pattern: Pattern;
+    let continueAnimation = true;
 
     function stop() { // After a pattern is done, switch to a new one
         pattern = new track.patterns[Math.floor(Math.random() * track.patterns.length)](canvas, ctx, track.bpm, stop);
+        // Check if the audio is done
+        if (audio.ended) {
+            continueAnimation = false;
+            selectTrack();
+            audio.src = track.url as unknown as string; // Parcel handles URL to string conversion
+            audio.play().catch(error => {
+                console.error('Error playing audio:', error);
+            });
+        }
     }
 
     stop();
@@ -41,7 +70,7 @@ function startTrack() {
         requestAnimationFrame(animate);
     }
 
-    animate();
+    if (continueAnimation) animate();
 }
 
 canvas.addEventListener('click', () => {

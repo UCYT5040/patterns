@@ -4,7 +4,8 @@
   "description": "An infinite, immersive visual experience.",
   "source": "src/index.html",
   "scripts": {
-    "dev": "parcel"
+    "dev": "parcel",
+    "build": "parcel build"
   },
   "author": "Jeremiah Saunders",
   "license": "UNLICENSED",
